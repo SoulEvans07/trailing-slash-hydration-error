@@ -2,6 +2,7 @@ import type { AppProps } from "next/app";
 import type { AppContextType } from "next/dist/shared/lib/utils";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { appWithTranslation } from "next-i18next";
 
 export function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -27,4 +28,4 @@ App.getInitialProps = async ({ Component, ctx }: AppContextType) => {
   return { pageProps };
 };
 
-export default App;
+export default appWithTranslation(App);
