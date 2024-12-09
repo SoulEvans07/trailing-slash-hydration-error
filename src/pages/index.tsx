@@ -1,3 +1,4 @@
+import type { GetServerSideProps } from "next";
 import Link from "next/link";
 
 export default function Home() {
@@ -8,3 +9,7 @@ export default function Home() {
     </div>
   );
 }
+
+export const getServerSideProps = (async () => {
+  return { props: {} };
+}) satisfies GetServerSideProps;

@@ -1,3 +1,4 @@
+import type { GetServerSideProps } from "next";
 import Link from "next/link";
 
 export default function OtherPage() {
@@ -8,3 +9,7 @@ export default function OtherPage() {
     </div>
   );
 }
+
+export const getServerSideProps = (async () => {
+  return { props: {} };
+}) satisfies GetServerSideProps;

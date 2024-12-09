@@ -1,8 +1,9 @@
 import type { AppProps } from "next/app";
+import type { AppContextType } from "next/dist/shared/lib/utils";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-export default function App({ Component, pageProps }: AppProps) {
+export function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   return (
@@ -15,3 +16,15 @@ export default function App({ Component, pageProps }: AppProps) {
     </>
   );
 }
+
+App.getInitialProps = async ({ Component, ctx }: AppContextType) => {
+  let pageProps = {};
+
+  if (Component.getInitialProps) {
+    pageProps = await Component.getInitialProps(ctx);
+  }
+
+  return { pageProps };
+};
+
+export default App;
